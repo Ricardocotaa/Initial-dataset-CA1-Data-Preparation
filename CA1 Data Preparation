@@ -113,3 +113,67 @@ Inflation rate                                    0
 GDP                                               0
 Target                                            0
 dtype: int64
+
+df = df.dropna()
+
+df.shape
+(4415, 37)
+
+df.columns = (
+    df.columns
+    .str.strip()
+    .str.lower()
+    .str.replace(r"[^a-z0-9]+", "_", regex=True)
+    .str.strip("_")
+)
+
+df.duplicated().sum()
+np.int64(0)
+
+df.info()
+<class 'pandas.core.frame.DataFrame'>
+Index: 4415 entries, 0 to 4423
+Data columns (total 37 columns):
+ #   Column                                        Non-Null Count  Dtype  
+---  ------                                        --------------  -----  
+ 0   marital_status                                4415 non-null   object 
+ 1   application_mode                              4415 non-null   int64  
+ 2   application_order                             4415 non-null   int64  
+ 3   course                                        4415 non-null   float64
+ 4   daytime_evening_attendance                    4415 non-null   int64  
+ 5   previous_qualification                        4415 non-null   int64  
+ 6   previous_qualification_grade                  4415 non-null   float64
+ 7   nacionality                                   4415 non-null   int64  
+ 8   mother_s_qualification                        4415 non-null   int64  
+ 9   father_s_qualification                        4415 non-null   float64
+ 10  mother_s_occupation                           4415 non-null   int64  
+ 11  father_s_occupation                           4415 non-null   int64  
+ 12  admission_grade                               4415 non-null   float64
+ 13  displaced                                     4415 non-null   object 
+ 14  educational_special_needs                     4415 non-null   int64  
+ 15  debtor                                        4415 non-null   float64
+ 16  tuition_fees_up_to_date                       4415 non-null   object 
+ 17  gender                                        4415 non-null   int64  
+ 18  scholarship_holder                            4415 non-null   int64  
+ 19  age_at_enrollment                             4415 non-null   object 
+ 20  international                                 4415 non-null   float64
+ 21  curricular_units_1st_sem_credited             4415 non-null   object 
+ 22  curricular_units_1st_sem_enrolled             4415 non-null   int64  
+ 23  curricular_units_1st_sem_evaluations          4415 non-null   int64  
+ 24  curricular_units_1st_sem_approved             4415 non-null   int64  
+ 25  curricular_units_1st_sem_grade                4415 non-null   float64
+ 26  curricular_units_1st_sem_without_evaluations  4415 non-null   int64  
+ 27  curricular_units_2nd_sem_credited             4415 non-null   int64  
+ 28  curricular_units_2nd_sem_enrolled             4415 non-null   float64
+ 29  curricular_units_2nd_sem_evaluations          4415 non-null   int64  
+ 30  curricular_units_2nd_sem_approved             4415 non-null   int64  
+ 31  curricular_units_2nd_sem_grade                4415 non-null   float64
+ 32  curricular_units_2nd_sem_without_evaluations  4415 non-null   int64  
+ 33  unemployment_rate                             4415 non-null   float64
+ 34  inflation_rate                                4415 non-null   float64
+ 35  gdp                                           4415 non-null   float64
+ 36  target                                        4415 non-null   object 
+dtypes: float64(12), int64(19), object(6)
+memory usage: 1.3+ MB
+
+
