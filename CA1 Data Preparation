@@ -74,6 +74,7 @@ Data columns (total 37 columns):
 dtypes: float64(12), int64(19), object(6)
 memory usage: 1.2+ MB
 
+df.isnull().sum()
 Marital status                                    0
 Application mode                                  0
 Application order                                 0
