@@ -176,4 +176,243 @@ Data columns (total 37 columns):
 dtypes: float64(12), int64(19), object(6)
 memory usage: 1.3+ MB
 
+for col in df.select_dtypes(include="object").columns:
+    print(col)
+    print(df[col].unique())
+    print()
+
+marital_status
+['1' '2' '4' '?' '3' '5' '6']
+
+displaced
+['1' '0']
+
+tuition_fees_up_to_date
+['1' '0' '?']
+
+age_at_enrollment
+['20' '19' '45' '50' '18' '22' '21' '34' '37' '43' '55' '39' '29' '24'
+ '27' '23' '26' '33' '35' '25' '44' '36' '47' '28' '38' 'UnKnown' '30'
+ '31' '32' '40' '42' '48' '49' '46' '41' '70' '60' '53' '51' '52' '54'
+ '61' '58' '59' '17' '57' '62']
+
+curricular_units_1st_sem_credited
+['0' '2' '3' '6' '7' '13' '4' '1' '5' '19' '11' '8' '10' '9' '15' '12'
+ '14' '18' '17' '16' '20' 'Na']
+
+target
+['Dropout' 'Graduate' 'Enrolled' 'Grad' 'graduate' 'Drop' 'dropout']
+
+df["marital_status"] = df["marital_status"].replace("?", np.nan)
+df["tuition_fees_up_to_date"] = df["tuition_fees_up_to_date"].replace("?", np.nan)
+df["age_at_enrollment"] = df["age_at_enrollment"].replace("UnKnown", np.nan)
+df["curricular_units_1st_sem_credited"] = df["curricular_units_1st_sem_credited"].replace("Na", np.nan)
+
+df.isnull().sum()
+marital_status                                  0
+application_mode                                0
+application_order                               0
+course                                          0
+daytime_evening_attendance                      0
+previous_qualification                          0
+previous_qualification_grade                    0
+nacionality                                     0
+mother_s_qualification                          0
+father_s_qualification                          0
+mother_s_occupation                             0
+father_s_occupation                             0
+admission_grade                                 0
+displaced                                       0
+educational_special_needs                       0
+debtor                                          0
+tuition_fees_up_to_date                         0
+gender                                          0
+scholarship_holder                              0
+age_at_enrollment                               0
+international                                   0
+curricular_units_1st_sem_credited               1
+curricular_units_1st_sem_enrolled               0
+curricular_units_1st_sem_evaluations            0
+curricular_units_1st_sem_approved               0
+curricular_units_1st_sem_grade                  0
+curricular_units_1st_sem_without_evaluations    0
+curricular_units_2nd_sem_credited               0
+curricular_units_2nd_sem_enrolled               0
+curricular_units_2nd_sem_evaluations            0
+curricular_units_2nd_sem_approved               0
+curricular_units_2nd_sem_grade                  0
+curricular_units_2nd_sem_without_evaluations    0
+unemployment_rate                               0
+inflation_rate                                  0
+gdp                                             0
+target                                          0
+dtype: int64
+
+df = df.dropna()
+
+df.shape
+(4411, 37)
+
+for col in df.select_dtypes(include="object").columns:
+    print(col)
+    print(df[col].unique())
+    print()
+
+marital_status
+['1' '2' '4' '3' '5' '6']
+
+displaced
+['1' '0']
+
+tuition_fees_up_to_date
+['1' '0']
+
+age_at_enrollment
+['20' '19' '45' '50' '18' '22' '21' '34' '37' '43' '55' '39' '29' '24'
+ '27' '23' '26' '33' '35' '25' '44' '36' '47' '28' '38' '30' '31' '32'
+ '40' '42' '48' '49' '46' '41' '70' '60' '53' '51' '52' '54' '61' '58'
+ '59' '17' '57' '62']
+
+curricular_units_1st_sem_credited
+['0' '2' '3' '6' '7' '13' '4' '1' '5' '19' '11' '8' '10' '9' '15' '12'
+ '14' '18' '17' '16' '20']
+
+target
+['Dropout' 'Graduate' 'Enrolled' 'Grad' 'graduate' 'Drop' 'dropout']
+
+df["curricular_units_1st_sem_credited"].unique()
+array(['0', '2', '3', '6', '7', '13', '4', '1', '5', '19', '11', '8',
+       '10', '9', '15', '12', '14', '18', '17', '16', '20'], dtype=object)
+
+df["marital_status"].unique()
+array(['1', '2', '4', '3', '5', '6'], dtype=object)
+
+df["tuition_fees_up_to_date"].unique()
+array(['1', '0'], dtype=object)
+
+df["age_at_enrollment"].unique()
+array(['20', '19', '45', '50', '18', '22', '21', '34', '37', '43', '55',
+       '39', '29', '24', '27', '23', '26', '33', '35', '25', '44', '36',
+       '47', '28', '38', '30', '31', '32', '40', '42', '48', '49', '46',
+       '41', '70', '60', '53', '51', '52', '54', '61', '58', '59', '17',
+       '57', '62'], dtype=object)
+
+df.isnull().sum()
+marital_status                                  0
+application_mode                                0
+application_order                               0
+course                                          0
+daytime_evening_attendance                      0
+previous_qualification                          0
+previous_qualification_grade                    0
+nacionality                                     0
+mother_s_qualification                          0
+father_s_qualification                          0
+mother_s_occupation                             0
+father_s_occupation                             0
+admission_grade                                 0
+displaced                                       0
+educational_special_needs                       0
+debtor                                          0
+tuition_fees_up_to_date                         0
+gender                                          0
+scholarship_holder                              0
+age_at_enrollment                               0
+international                                   0
+curricular_units_1st_sem_credited               0
+curricular_units_1st_sem_enrolled               0
+curricular_units_1st_sem_evaluations            0
+curricular_units_1st_sem_approved               0
+curricular_units_1st_sem_grade                  0
+curricular_units_1st_sem_without_evaluations    0
+curricular_units_2nd_sem_credited               0
+curricular_units_2nd_sem_enrolled               0
+curricular_units_2nd_sem_evaluations            0
+curricular_units_2nd_sem_approved               0
+curricular_units_2nd_sem_grade                  0
+curricular_units_2nd_sem_without_evaluations    0
+unemployment_rate                               0
+inflation_rate                                  0
+gdp                                             0
+target                                          0
+dtype: int64
+
+df["curricular_units_1st_sem_credited"] = pd.to_numeric(df["curricular_units_1st_sem_credited"])
+df["age_at_enrollment"] = pd.to_numeric(df["age_at_enrollment"])
+df["marital_status"] = pd.to_numeric(df["marital_status"])
+df["displaced"] = pd.to_numeric(df["displaced"])
+df["tuition_fees_up_to_date"] = pd.to_numeric(df["tuition_fees_up_to_date"])
+
+df.info()
+<class 'pandas.core.frame.DataFrame'>
+Index: 4411 entries, 0 to 4423
+Data columns (total 37 columns):
+ #   Column                                        Non-Null Count  Dtype  
+---  ------                                        --------------  -----  
+ 0   marital_status                                4411 non-null   int64  
+ 1   application_mode                              4411 non-null   int64  
+ 2   application_order                             4411 non-null   int64  
+ 3   course                                        4411 non-null   float64
+ 4   daytime_evening_attendance                    4411 non-null   int64  
+ 5   previous_qualification                        4411 non-null   int64  
+ 6   previous_qualification_grade                  4411 non-null   float64
+ 7   nacionality                                   4411 non-null   int64  
+ 8   mother_s_qualification                        4411 non-null   int64  
+ 9   father_s_qualification                        4411 non-null   float64
+ 10  mother_s_occupation                           4411 non-null   int64  
+ 11  father_s_occupation                           4411 non-null   int64  
+ 12  admission_grade                               4411 non-null   float64
+ 13  displaced                                     4411 non-null   int64  
+ 14  educational_special_needs                     4411 non-null   int64  
+ 15  debtor                                        4411 non-null   float64
+ 16  tuition_fees_up_to_date                       4411 non-null   int64  
+ 17  gender                                        4411 non-null   int64  
+ 18  scholarship_holder                            4411 non-null   int64  
+ 19  age_at_enrollment                             4411 non-null   int64  
+ 20  international                                 4411 non-null   float64
+ 21  curricular_units_1st_sem_credited             4411 non-null   int64  
+ 22  curricular_units_1st_sem_enrolled             4411 non-null   int64  
+ 23  curricular_units_1st_sem_evaluations          4411 non-null   int64  
+ 24  curricular_units_1st_sem_approved             4411 non-null   int64  
+ 25  curricular_units_1st_sem_grade                4411 non-null   float64
+ 26  curricular_units_1st_sem_without_evaluations  4411 non-null   int64  
+ 27  curricular_units_2nd_sem_credited             4411 non-null   int64  
+ 28  curricular_units_2nd_sem_enrolled             4411 non-null   float64
+ 29  curricular_units_2nd_sem_evaluations          4411 non-null   int64  
+ 30  curricular_units_2nd_sem_approved             4411 non-null   int64  
+ 31  curricular_units_2nd_sem_grade                4411 non-null   float64
+ 32  curricular_units_2nd_sem_without_evaluations  4411 non-null   int64  
+ 33  unemployment_rate                             4411 non-null   float64
+ 34  inflation_rate                                4411 non-null   float64
+ 35  gdp                                           4411 non-null   float64
+ 36  target                                        4411 non-null   object 
+dtypes: float64(12), int64(24), object(1)
+memory usage: 1.3+ MB
+
+df["target"].unique()
+array(['Dropout', 'Graduate', 'Enrolled', 'Grad', 'graduate', 'Drop',
+       'dropout'], dtype=object)
+
+df["target"] = df["target"].str.lower()
+
+df["target"] = df["target"].replace({
+    "grad": "graduate",
+    "drop": "dropout"
+})
+
+df["target"].unique()
+array(['dropout', 'graduate', 'enrolled'], dtype=object)
+
+df.describe()
+	marital_status	application_mode	application_order	course	daytime_evening_attendance	previous_qualification	previous_qualification_grade	nacionality	mother_s_qualification	father_s_qualification	...	curricular_units_1st_sem_without_evaluations	curricular_units_2nd_sem_credited	curricular_units_2nd_sem_enrolled	curricular_units_2nd_sem_evaluations	curricular_units_2nd_sem_approved	curricular_units_2nd_sem_grade	curricular_units_2nd_sem_without_evaluations	unemployment_rate	inflation_rate	gdp
+count	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000	...	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000	4411.000000
+mean	1.178644	18.671276	1.728406	8861.600091	0.890954	4.585355	132.628202	1.866697	19.566992	22.268647	...	0.137837	0.540920	6.233280	8.062798	4.437089	10.233772	0.150079	11.569848	1.230855	0.005933
+std	0.606321	17.470528	1.313857	2053.895552	0.311732	10.228951	13.191683	6.899433	15.601303	15.339888	...	0.691739	1.919193	2.192905	3.944444	3.013473	5.210856	0.754525	2.663520	1.381920	2.267564
+min	1.000000	1.000000	0.000000	33.000000	0.000000	1.000000	95.000000	1.000000	1.000000	1.000000	...	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	7.600000	-0.800000	-4.060000
+25%	1.000000	1.000000	1.000000	9085.000000	1.000000	1.000000	125.000000	1.000000	2.000000	3.000000	...	0.000000	0.000000	5.000000	6.000000	2.000000	10.800000	0.000000	9.400000	0.300000	-1.700000
+50%	1.000000	17.000000	1.000000	9238.000000	1.000000	1.000000	133.100000	1.000000	19.000000	19.000000	...	0.000000	0.000000	6.000000	8.000000	5.000000	12.200000	0.000000	11.100000	1.400000	0.320000
+75%	1.000000	39.000000	2.000000	9556.000000	1.000000	1.000000	140.000000	1.000000	37.000000	37.000000	...	0.000000	0.000000	7.000000	10.000000	6.000000	13.333333	0.000000	13.900000	2.600000	1.790000
+max	6.000000	53.000000	9.000000	9991.000000	1.000000	43.000000	190.000000	109.000000	44.000000	44.000000	...	12.000000	19.000000	23.000000	33.000000	20.000000	18.571429	12.000000	16.200000	3.700000	3.510000
+8 rows × 36 columns
+
 
