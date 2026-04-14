@@ -555,3 +555,9 @@ print(reduced_data[:5])
 
 print(reduced_data.shape)
 (4411, 33)
+
+# Explained curse of dimensionality
+
+# The curse of dimensionality refers to the challenges that arise when working with datasets that contain a large number of variables. As the number of features increases, the data becomes more complex and harder to analyse, as patterns become less clear and relationships between variables are more difficult to interpret.
+# In this dataset, the presence of many variables, particularly those related to academic performance, increases the overall complexity and introduces redundancy. This was observed during the EDA phase, where several variables were found to be highly correlated.
+# By applying PCA, the number of variables was reduced while retaining 99.5% of the total variance. This helps to minimise the impact of the curse of dimensionality and makes the dataset more efficient for further analysis.
