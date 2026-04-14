@@ -561,3 +561,10 @@ print(reduced_data.shape)
 # The curse of dimensionality refers to the challenges that arise when working with datasets that contain a large number of variables. As the number of features increases, the data becomes more complex and harder to analyse, as patterns become less clear and relationships between variables are more difficult to interpret.
 # In this dataset, the presence of many variables, particularly those related to academic performance, increases the overall complexity and introduces redundancy. This was observed during the EDA phase, where several variables were found to be highly correlated.
 # By applying PCA, the number of variables was reduced while retaining 99.5% of the total variance. This helps to minimise the impact of the curse of dimensionality and makes the dataset more efficient for further analysis.
+
+# Testing and results
+
+# To evaluate the PCA, the transformed dataset was analysed after dimensionality reduction. The original dataset contained 36 variables, which were reduced to 33 principal components while retaining 99.5% of the total variance.
+# This result confirms that PCA was effective in identifying and reducing redundancy within the dataset, particularly among variables related to academic performance, which were previously identified as highly correlated during the EDA phase.
+# Although the reduction in the number of variables is relatively small, it demonstrates that most features in the dataset contribute meaningful information. At the same time, PCA helped to simplify the dataset by combining related variables into principal components.
+# Overall, the reduced dataset maintains the key characteristics of the original data while being more efficient for further analysis, showing that PCA was successfully applied.
