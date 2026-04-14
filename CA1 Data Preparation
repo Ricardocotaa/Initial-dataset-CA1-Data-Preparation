@@ -415,4 +415,34 @@ min	1.000000	1.000000	0.000000	33.000000	0.000000	1.000000	95.000000	1.000000	1.
 max	6.000000	53.000000	9.000000	9991.000000	1.000000	43.000000	190.000000	109.000000	44.000000	44.000000	...	12.000000	19.000000	23.000000	33.000000	20.000000	18.571429	12.000000	16.200000	3.700000	3.510000
 8 rows × 36 columns
 
+#EXPLORATORY DATA ANALISYS (EDA)
+
+sns.histplot(df["age_at_enrollment"], bins=20)
+plt.title("Distribution of Age at Enrollment")
+plt.show()
+# Imagen from Notebook
+#The distribution of age at enrollment shows that most students are concentrated in the younger age range, particularly between 18 and 22 years old. The distribution is right-skewed, indicating that there are fewer older students compared to younger ones. This suggests that the majority of students enroll in higher education shortly after completing their previous studies.
+
+sns.countplot(x="target", data=df)
+plt.title("Distribution of Student Outcomes")
+plt.show()
+#Imagen form Notebook
+##The distribution of the target variable shows that the majority of students in the dataset have graduated, followed by those who dropped out, while a smaller proportion remains enrolled. This indicates that the dataset is not perfectly balanced.
+
+sns.boxplot(x="target", y="age_at_enrollment", data=df)
+plt.title("Age vs Student Outcome")
+plt.show()
+#Imagen form Notebook
+#From the boxplot, it can be seen that students who dropped out tend to have a wider range of ages compared to those who graduated or are still enrolled. In particular, there are more older students in the dropout group.
+#On the other hand, students who graduated are mostly concentrated within a younger age range, suggesting that younger students may have a higher likelihood of completing their studies. This could indicate that age plays a role in student outcomes.
+
+numeric_df = df.select_dtypes(include=["int64", "float64"])
+
+# Converted object columns to numeric values for analysis
+
+sns.heatmap(numeric_df.corr(), cmap="coolwarm", annot=False)
+plt.title("Correlation Matrix")
+plt.show()
+#Imagen from Notebook
+#From the correlation matrix, it can be seen that most variables do not have strong relationships with each other, meaning they provide different types of information. However, there is a clear group of variables related to academic performance that are highly correlated.
 
