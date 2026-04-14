@@ -1,5 +1,12 @@
 # *CA1 Data Preparation*
 
+## Introduction
+
+#Data analysis plays a key role in understanding complex datasets and extracting meaningful insights. The process typically begins with dataset characterisation, which provides an overview of the data structure, followed by data cleaning to ensure accuracy and consistency before analysis.
+#Exploratory Data Analysis (EDA) is then used to identify patterns, trends, and relationships within the data. It helps to better understand the variables and detect patterns or anomalies in the dataset, making it an essential step before further analysis (IBM, n.d.).
+#In addition, dimensionality reduction methods such as Principal Component Analysis (PCA) are commonly applied to simplify datasets by reducing the number of variables while preserving most of the original information. PCA works by transforming correlated variables into a smaller set of uncorrelated components (scikit-learn, n.d.).
+#Furthermore, preprocessing techniques such as data scaling are essential when applying PCA, as they ensure that all variables contribute equally to the analysis (scikit-learn, n.d.). This study applies data characterisation, cleaning, EDA, and PCA to analyse a student dataset, with the aim of understanding its structure and reducing its complexity for further analysis.
+
 # Initial dataset loading and characterization
 
 import pandas as pd
@@ -597,3 +604,10 @@ print(reduced_data.shape)
 #Based on these findings, PCA was applied to reduce the dimensionality of the dataset. The results showed that 33 components were required to retain 99.5% of the total variance, reducing the dataset from 36 variables while preserving most of the information. This confirmed the presence of some redundancy, particularly among correlated variables.
 #Finally, the concept of the curse of dimensionality was addressed, highlighting how datasets with many variables can become complex and harder to analyse. By applying PCA, this issue was reduced, making the dataset more efficient for analysis.
 #Overall, the analysis provided a clear understanding of the dataset and demonstrated how data cleaning, EDA, and PCA can be combined to improve data quality and reduce complexity.
+
+##Reference 
+
+# scikit-learn (n.d.) Preprocessing data. Available at: https://scikit-learn.org/stable/modules/preprocessing.html (Accessed: 13 April 2026).
+# scikit-learn (n.d.) PCA. Available at: https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html (Accessed: 14 April 2026).
+# IBM (n.d.) What is exploratory data analysis (EDA)? Available at: https://www.ibm.com/topics/exploratory-data-analysis (Accessed: 14 April 2026).
+# GeeksforGeeks (n.d.) Curse of dimensionality. Available at: https://www.geeksforgeeks.org/curse-of-dimensionality/ (Accessed: 14 April 2026).
