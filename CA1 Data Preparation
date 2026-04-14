@@ -1,3 +1,7 @@
+# *CA1 Data Preparation*
+
+# Initial dataset loading and characterization
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -113,6 +117,12 @@ Inflation rate                                    0
 GDP                                               0
 Target                                            0
 dtype: int64
+
+#The dataset contains 4,424 observations and 37 attributes, including a mix of numerical and categorical variables. These variables cover demographic information (such as marital status and gender), academic performance (including grades and curricular units), and economic indicators like unemployment rate, inflation rate, and GDP.
+#Initial inspection shows that most columns are complete, with only a small number of missing values in variables such as “Course”, “Father’s qualification”, and “Admission grade”. 
+#The dataset includes a variety of data types, including integers, floats, and categorical variables, allowing for both quantitative and qualitative analysis. 
+
+# Data Cleaning
 
 df = df.dropna()
 
@@ -401,7 +411,13 @@ df["target"] = df["target"].replace({
 })
 
 df["target"].unique()
-array(['dropout', 'graduate', 'enrolled'], dtype=object)
+#array(['dropout', 'graduate', 'enrolled'], dtype=object)
+
+#The dataset was first checked for missing values, where only a small number of records were affected. These rows were removed to improve data quality and ensure consistency.
+#Next, the column names were standardised by converting them to lowercase and replacing spaces with underscores. This makes the dataset easier to read and work with in Python. The dataset was also checked for duplicate records, and none were found.
+#During inspection, it was identified that some variables were stored as object data types despite representing numerical values. These columns were converted into numeric format to ensure they could be used in later analysis. In addition, invalid values such as “?” and “Unknown” were detected in specific columns and replaced during cleaning. The target variable was standardised to ensure consistency across categories, but it was intentionally kept as a categorical (object) variable, as it represents class labels rather than numerical values.
+
+# Explory Data Analisys
 
 df.describe()
 	marital_status	application_mode	application_order	course	daytime_evening_attendance	previous_qualification	previous_qualification_grade	nacionality	mother_s_qualification	father_s_qualification	...	curricular_units_1st_sem_without_evaluations	curricular_units_2nd_sem_credited	curricular_units_2nd_sem_enrolled	curricular_units_2nd_sem_evaluations	curricular_units_2nd_sem_approved	curricular_units_2nd_sem_grade	curricular_units_2nd_sem_without_evaluations	unemployment_rate	inflation_rate	gdp
@@ -444,7 +460,9 @@ sns.heatmap(numeric_df.corr(), cmap="coolwarm", annot=False)
 plt.title("Correlation Matrix")
 plt.show()
 #Imagen from Notebook
-#From the correlation matrix, it can be seen that most variables do not have strong relationships with each other, meaning they provide different types of information. However, there is a clear group of variables related to academic performance that are highly correlated.
+#A heatmap was used to visualise the correlation between numerical variables in the dataset. 
+#From the correlation matrix, it can be seen that most variables do not have strong relationships with each other, meaning they provide different types of information. However, there is a clear group of variables related to academic performance that are highly correlated, particularly those measuring approved units, grades, and evaluations across both semesters.
+#This strong correlation indicates that these variables are closely related and may be measuring similar aspects of student performance. As a result, this suggests the presence of redundancy in the dataset, which supports the use of PCA for dimensionality reduction.
 
 # Started PCA analysis and data preparation
 
@@ -555,6 +573,9 @@ print(reduced_data[:5])
 
 print(reduced_data.shape)
 (4411, 33)
+
+#Principal Component Analysis (PCA) is a dimensionality reduction technique that transforms the original variables into a new set of uncorrelated components. These components are ordered so that the first ones retain most of the variation present in the dataset.
+#In this analysis, PCA was applied to reduce the number of variables while preserving as much information as possible, particularly due to the presence of correlated features identified during EDA.
 
 # Explained curse of dimensionality
 
